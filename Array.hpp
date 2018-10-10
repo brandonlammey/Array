@@ -39,6 +39,7 @@ Array<T>::~Array()
 
 	// delete array of pointers
 	delete[] m_arrPtr; 
+	m_arrPtr = nullptr;
 	m_size = 0;
 }
 
@@ -138,36 +139,160 @@ void Array<T>::addBack(T val)
 template<typename T>
 bool Array<T>::rotateFrontToBack()
 {
-	return 0;
+	//if there is one element or fewer
+	if(m_size <= 1)
+	{
+		return false;
+	}
+
+	//keep track of front element
+	T* tempPtr = m_arrPtr[0];
+
+	//shift each element left
+	for(int i = 0; i<(m_size-1); i++)
+	{
+		m_arrPtr[i] = m_arrPtr[i+1];
+	}
+	//set last element
+	m_arrPtr[m_size-1] = tempPtr;
+	return true
+
 }
 
 template<typename T>
 bool Array<T>::rotateBackToFront()
 {
-	return 0;
+	//if there is one element or fewer
+	if(m_size <= 1)
+	{
+		return false;
+	}
+
+	//keep track of last element
+	T* tempPtr = m_arrPtr[m_size-1];
+
+	//shift each element right
+	for(int i = (m_size-1); i>0; i--)
+	{
+		m_arrPtr[i] = m_arrPtr[i-1];
+	}
+	//set first element
+	m_arrPtr[0] = tempPtr;
+	return true
 }
 
 template<typename T>
 T Array<T>::getValue(int index)
 {
-	return 0;
+	if(index >(m_size-1)||index < 0)
+	{
+		//throw error 
+	}
+
+	return m_arrPtr[index];
 }
 
 template<typename T>
 int Array<T>::getIndex(T val)
 {
-	return 0;
+	for(int i = 0; i<m_size; i++)
+	{
+		if(m_arrPtr[i] == val)
+			return i;
+	}
+	return -1;
 }
 
 template<typename T>
 int Array<T>::getInstances(T val)
 {
-	return 0;
+	int instances = 0
+	for(int i = 0; i<m_size; i++)
+	{
+		if(m_arrPtr[i] == val)
+			instances++;
+	}
+	return instances;
 }
 
 template<typename T>
 bool Array<T>::removeValue(T val)
 {
-	return 0;
+	int temp_size = m_size;
+
+	//function removes all null pointers as well
+	//removes all instances of value 
+	for(i=0; i<m_size; i++)
+	{
+		if(m_arrPtr[i] = val)
+		{
+			delete[] m_arrPtr[i];
+			m_arrPtr[i] = nullptr;
+		}
+		if(m_arrPtr[i] == nullptr)
+		{
+			temp_size--;
+		}
+	}
+
+	T** temp_arrPtr = new T*[temp_size];
+
+	//set temp array
+	for(int i =0, int j = 0; i< temp_size; i++, j++)
+	{
+		//while a nullptr increment position for original array
+		while(m_arrPtr[j] == nullptr && j < m_size )
+		{
+			j++
+		}
+		//if j > m_size do not access initial array outside of bounds
+		if(j < m_size)
+		{
+			temp_arrPtr[i] = m_arrPtr[j];
+		}
+		else
+		{
+			i = temp_size;
+		}
+	}
+
+	delete[] m_arrPtr;
+	m_arrPtr = temp_arrPtr;
+	m_size = temp_size;
+	return true;
+
+}
+
+template<typename T>
+bool Array<T>::removeValueAt(int index)
+{
+	if(index >(m_size-1)||index < 0)
+	{
+		return false;  
+	}
+
+	delete[] m_arrPtr[index];
+
+	int temp_size = m_size-1;
+	T** temp_arrPtr = new T*[temp_size];
+
+	//set elements for temp array
+	for(int i =0, int j = 0; i< temp_size; i++, j++)
+	{
+		if(j == index)
+		{
+			j++
+		}
+		temp_arrPtr[i] = m_arrPtr[j];
+	}
+
+	//delete array of pointers but not what they are pointing to
+	delete[] m_arrPtr;
+
+	//set member variables
+	m_arrPtr = temp_arrPtr;
+	m_size = temp_size; 
+	return true;
+
 }
 

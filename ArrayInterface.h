@@ -42,6 +42,9 @@ class ArrayInterface
     //remove a value from the array including index and update array 
     virtual bool removeValue(T val) = 0;
 
+    //remove a value from the array at a specific index including index and update array
+    virtual bool removeValueAt(int index) = 0;
+
 };
 
 #endif

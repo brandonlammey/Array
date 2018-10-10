@@ -54,8 +54,12 @@ class Array: public ArrayInterface<T>
         //get the instances of an element in an array
         int getInstances(T val);
 
-        //remove a value from the array including index and update array 
+        //remove all instances of a value from an array and update array 
+        //removes all blanks in array as well (nullptrs) 
         bool removeValue(T val);
+
+        //remove a value from the array at a specific index including index and update array
+        bool removeValueAt(int index);
 
 
 };
