@@ -10,7 +10,7 @@ This generic templated array data structure will create a dynamic array of point
 
 ## Purpose
 
-To quickly perform common place array operations without the worry of directly handling the array. Focus on the end of goal of a problem and not on array operations. 
+To quickly perform common place array operations in C++ without the worry of directly handling the array. Focus on the end of goal of a problem and not on array operations. 
 
 ## Configure
 
