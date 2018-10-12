@@ -12,6 +12,24 @@ This generic templated array data structure will create a dynamic array of point
 
 To quickly perform common place array operations without the worry of directly handling the array. Focus on the end of goal of a problem and not on array operations. 
 
+## Configure
+
+Remove Makefile and main.cpp
+Add to personal code and Makefile 
+Include with `#include "Array.h"`
 
 
-#### **Currently in progress of comleting this and adding test cases!**
+## Tests
+
+#### **Currently working on adding test cases!**
+
+## Author
+
+Brandon Lammey
+
+[github-follow-url]: https://github.com/brandonlammey
+[github-follow-image]: https://img.shields.io/github/followers/espadrine.svg?style=social&label=Follow
+
+
+
+#### **Currently a work in progress!**
